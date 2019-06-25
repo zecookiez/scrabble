@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scrabble</title>
+    <link href="styles/style.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+
+  	<!--
+
+		Splash page
+
+  	-->
+
+  	<div id="splash">
+
+  		<!-- Content on top of the svg background -->
+
+  		<div id="splashContent">
+	    	<h1>SCRABBLE</h1>
+	    	<input type="text" id="player_name" placeholder="Your name">
+	    	<br><br>
+	    	<table>
+	    		<tr>
+	    			<td><a href="#" onclick="begin(0)" class="enter_link"> EASY</a></td>
+	    			<td><a href="#" onclick="begin(1)" class="enter_link"> MED </a></td>
+	    			<td><a href="#" onclick="begin(2)" class="enter_link">HARD </a></td>
+	    		</tr>
+	    	</table>
+	    </div>
+
+  		<div id="endContent">
+	    	<h1>Game Over</h1>
+	    	<br>
+	    	<a href="" class="enter_link"> Play Again?</a>
+	    	<br><br>
+	    	<table id="endingStatistics">
+	    	</table>
+	    </div>
+
+	    <!-- SVG Background -->
+
+  		<div id="splashBack"></div>
+
+	</div>
+
+  	<!-- 
+
+  		Main Content
+
+  	-->
+
+    <table class="screenSection" width="100%">
+    
+      <!-- Holds the main content -->
+    
+    	<tr>
+        
+        <!-- Scorekeeper -->
+      
+    		<td width="25%">
+    			<table class="scoreTable">
+    				<tr>
+    					<td>
+    						<h2 id="player_display">You</h2>
+							<h3 id="player_score">0</h3>
+						</td>
+						<td>
+							<h2>Computer</h2>
+							<h3 id="computer_score">0</h3>
+						</td>
+					</tr>
+				</table>
+			</td>
+      
+      <!-- Game Board -->
+      
+			<td width="40%">
+				<div id="content"></div>
+			</td>
+      
+      <!-- Input Form -->
+      
+			<td id="controls" width="35%">
+      
+        <!-- Row select -->
+	
+				<select id="row_position"></select>
+				
+        <!-- Column select -->
+        
+				<select id="col_position"></select>
+        
+        <!-- Orientation button -->
+				
+				<button class="option" id="direction" onclick="switch_direction()">🡆</button>
+        
+        <!-- Tile display -->
+        
+			  <input type="text" id="player_input" disabled>
+        
+        <!-- Delete button -->
+        
+				<button class="option" onclick="delete_previous()">DEL</button>
+				
+        <br><br>
+        
+        <!-- List the options -->
+			  
+        <button class="option" onclick="play_turn('place')">Place A Word</button>
+			  
+        <br>
+			  
+        <button class="option" onclick="play_turn('grab')">Grab Some Tiles</button>
+			  
+        <br>
+			  
+        <button class="option" onclick="play_turn()">Forfeit Turn</button>
+			  
+        <br><br>
+        
+        <!-- Display rack -->
+			  
+        <div id="p_rack"></div>
+			  
+        <br>
+        
+        <!-- Shuffle button -->
+			  
+        <button class="option" onclick="clear_display() || display_rack(P_RACK, true)">Shuffle</button>
+			  
+        <br><br>
+        
+        <!-- Display status/warnings -->
+			   
+        <p id="status">&nbsp;</p>
+        
+			</td>
+		</tr>
+	</table>
+
+	<a href="instructions.html" target="_blank" class="help">How To Play</a>
+
+	<script src="scripts/splash_styling.js", onload="begin_drawing()"></script>
+    <script src="scripts/load_bank.js"></script>
+	<script src="scripts/draw.js"></script>
+	<script src="scripts/computer.js"></script>
+    <script src="scripts/main.js"></script>
+	<script src="scripts/init.js" onload="initialize()"></script>
+  </body>
+</html>
